@@ -1,7 +1,7 @@
 import { Layout, Menu, MenuProps } from "antd";
 import Router from "./router";
 import { Content, Footer, Header } from "antd/es/layout/layout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function App() {
   const navigate = useNavigate();
@@ -15,30 +15,34 @@ export default function App() {
   }));
   return (
     <Layout>
-      <Header
-        style={{
-          display: "flex",
-          alignItems: "center",
-          background: "white",
-        }}
-      >
+      <Header className="flex items-center bg-white">
+        <h1 className="font-primary flex-1">Work story</h1>
         <Menu
           onClick={({ key }) => {
             navigate({ pathname: key });
           }}
+          className="font-primary"
           theme="light"
           mode="horizontal"
           defaultSelectedKeys={["1"]}
           items={items1}
           style={{ flex: 1, minWidth: 0 }}
         />
+        <div>
+          <Link
+            className="bg-primary font-primary rounded-lg py-4 px-6"
+            to="/sign-in"
+          >
+            Signin
+          </Link>
+        </div>
       </Header>
 
-      <Content style={{ height: "100vh" }}>
+      <Content>
         <Router />
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+      <Footer className="text-center border-t bg-white">
+        Workstory ©{new Date().getFullYear()} Created by DTD Dev
       </Footer>
     </Layout>
   );
