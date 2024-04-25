@@ -52,7 +52,6 @@ mod work_story {
         category_id: u64,
     ) -> ProgramResult {
         let work = &mut ctx.accounts.work;
-
         work.authority = ctx.accounts.signer.key();
         work.name = name;
         work.create_by = create_by;
@@ -65,7 +64,20 @@ mod work_story {
         sol_log_compute_units();
         Ok(())
     }
-    pub fn create_dao(ctx: Context<CreateDAO>) -> ProgramResult {
+    pub fn create_dao(
+        ctx: Context<CreateDAO>,
+        treasury: u64,
+        domain: String,
+        name: String,
+        limit_create: u64,
+        limit_comfirm: u64,
+    ) -> ProgramResult {
+        let dao = &mut ctx.accounts.dao;
+        dao.name = name;
+        dao.treasury = treasury;
+        dao.domain = domain;
+        dao.limit_create = limit_create;
+        dao.limit_comfirm = limit_comfirm;
         sol_log_compute_units();
         Ok(())
     }
@@ -157,6 +169,27 @@ pub struct CreateWork<'info> {
 
 #[derive(Accounts)]
 pub struct CreateDAO<'info> {
+    #[account(mut, seeds = [b"dao".as_ref(),signer.key().as_ref()], bump)]
+    pub state: Account<'info, DAOAccount>,
+    #[account(
+        init,
+        // Video account use string "video" and index of video as seeds
+        seeds = [b"dao".as_ref(), ],
+        bump,
+        payer = signer,
+        space = size_of::<DAOAccount>() + TEXT_LENGTH + USER_NAME_LENGTH + USER_URL_LENGTH+WORK_URL_LENGTH+8+32*NUMBER_OF_ALLOWED_LIKES_SPACE
+    )]
+    pub dao: Account<'info, DAOAccount>,
+
+    // Authority (this is signer who paid transaction fee)
+    #[account(mut)]
+    pub signer: Signer<'info>,
+
+    pub system_program: UncheckedAccount<'info>,
+
+    // Token program
+    #[account(constraint = token_program.key == &token::ID)]
+    pub token_program: Program<'info, Token>,
     pub created_at: Sysvar<'info, Clock>,
 }
 
@@ -180,6 +213,10 @@ pub struct DAOAccount {
     pub treasury: u64,
     pub proposals: Vec<ProofOfWorkAccount>,
     pub members: Vec<UserAccount>,
+    pub domain: String,
+    pub name: String,
+    pub limit_create: u64,
+    pub limit_comfirm: u64,
 }
 
 #[account]
@@ -189,7 +226,6 @@ pub struct UserAccount {
     pub bio: String,
     pub user_wallet_address: Pubkey,
     pub user_profile_image_url: String,
-
     pub tokens: u64,
 }
 #[account]

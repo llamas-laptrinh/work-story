@@ -1,0 +1,159 @@
+{
+  "version": "0.1.0",
+  "name": "work_story",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        { "name": "state", "isMut": true, "isSigner": false },
+        { "name": "signer", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "createUser",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": false },
+        { "name": "signer", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "createdAt", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "userName", "type": "string" },
+        { "name": "bio", "type": "string" },
+        { "name": "userProfileImageUrl", "type": "string" }
+      ]
+    },
+    {
+      "name": "createWork",
+      "accounts": [
+        { "name": "state", "isMut": true, "isSigner": false },
+        { "name": "work", "isMut": true, "isSigner": false },
+        { "name": "signer", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "createAt", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "name", "type": "string" },
+        { "name": "createBy", "type": "string" },
+        { "name": "imageUrl", "type": "string" },
+        { "name": "workUrl", "type": "string" },
+        { "name": "description", "type": "string" },
+        { "name": "categoryId", "type": "u64" }
+      ]
+    },
+    {
+      "name": "createDao",
+      "accounts": [
+        { "name": "state", "isMut": true, "isSigner": false },
+        { "name": "dao", "isMut": true, "isSigner": false },
+        { "name": "signer", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "createdAt", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "treasury", "type": "u64" },
+        { "name": "domain", "type": "string" },
+        { "name": "name", "type": "string" },
+        { "name": "limitCreate", "type": "u64" },
+        { "name": "limitComfirm", "type": "u64" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GlobalStateAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "totalDao", "type": "u64" },
+          { "name": "totalWork", "type": "u64" },
+          { "name": "totalMember", "type": "u64" }
+        ]
+      }
+    },
+    {
+      "name": "VerifyWorkProposalAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "title", "type": "string" },
+          { "name": "description", "type": "string" },
+          { "name": "votesFor", "type": "u64" },
+          { "name": "votesAgainst", "type": "u64" }
+        ]
+      }
+    },
+    {
+      "name": "DAOAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "treasury", "type": "u64" },
+          {
+            "name": "proposals",
+            "type": { "vec": { "defined": "ProofOfWorkAccount" } }
+          },
+          {
+            "name": "members",
+            "type": { "vec": { "defined": "UserAccount" } }
+          },
+          { "name": "domain", "type": "string" },
+          { "name": "name", "type": "string" },
+          { "name": "limitCreate", "type": "u64" },
+          { "name": "limitComfirm", "type": "u64" }
+        ]
+      }
+    },
+    {
+      "name": "UserAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "xpPoint", "type": "u64" },
+          { "name": "userName", "type": "string" },
+          { "name": "bio", "type": "string" },
+          { "name": "userWalletAddress", "type": "publicKey" },
+          { "name": "userProfileImageUrl", "type": "string" },
+          { "name": "tokens", "type": "u64" }
+        ]
+      }
+    },
+    {
+      "name": "ProofOfWorkAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "name", "type": "string" },
+          { "name": "createBy", "type": "string" },
+          { "name": "imageUrl", "type": "string" },
+          { "name": "workUrl", "type": "string" },
+          { "name": "description", "type": "string" },
+          { "name": "commentCount", "type": "u64" },
+          { "name": "categoryId", "type": "u64" },
+          { "name": "peopleWhoLiked", "type": { "vec": "publicKey" } },
+          { "name": "createdAt", "type": "i64" }
+        ]
+      }
+    },
+    {
+      "name": "CommentAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "text", "type": "string" },
+          { "name": "commenterName", "type": "string" },
+          { "name": "commenterUrl", "type": "string" },
+          { "name": "index", "type": "u64" }
+        ]
+      }
+    }
+  ]
+}
