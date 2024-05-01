@@ -21,6 +21,7 @@ export default function ConfirmInformation({ onSumit }: any) {
   return (
     <form className="flex flex-col gap-6">
       <div className="flex w-full justify-center">
+        
         <Input onClick={onSumit} value="Confirm" type="button" />
       </div>
     </form>

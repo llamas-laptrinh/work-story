@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   BellOutlined,
@@ -6,78 +7,71 @@ import {
   PayCircleOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import useDao from "../../hooks/ETH/useDao";
+import React from "react";
+import { Empty } from "antd";
 
 const DAO = ({ item }: any) => {
   return (
-    <div className="flex flex-col gap-6 p-6 border border-gray-300 justify-center rounded-xl">
-      <div className="flex justify-between">
-        <label className="text-lg font-medium">{item.name} </label>
-        <img className="w-12 h-12" src={item.logo} alt="DAO logo" />
-      </div>
-      <div className="flex justify-between items-center">
-        <div className="flex gap-5">
-          <div className="flex gap-[6px] items-center">
-            <PayCircleOutlined width={20} height={20} />
-            <span className="text-[#626576] text-lg font-medium">
-              {item.coinNumber}
-            </span>
+    <Link to={`/dao/${item.id}`}>
+      <div className="flex flex-col gap-6 p-6 border border-gray-300 justify-center rounded-xl">
+        <div className="flex justify-between">
+          <label className="text-lg font-medium">{item.name} </label>
+          <img
+            className="w-12 h-12"
+            src={item.logo || "/logo.png"}
+            alt="DAO logo"
+          />
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex gap-5">
+            <div className="flex gap-[6px] items-center">
+              <PayCircleOutlined width={20} height={20} />
+              <span className="text-[#626576] text-lg font-medium">
+                {Number(item.treasury)}
+              </span>
+            </div>
+            <div className="flex gap-[6px] items-center">
+              <SmileOutlined width={20} height={20} />
+              <span className="text-[#626576] text-lg font-medium">
+                {Number(item.totalMembers)}
+              </span>
+            </div>
           </div>
-          <div className="flex gap-[6px] items-center">
-            <SmileOutlined width={20} height={20} />
-            <span className="text-[#626576] text-lg font-medium">
-              {item.peopleNumber}
-            </span>
+          <div>
+            <BellOutlined />
           </div>
         </div>
-        <div>
-          <BellOutlined  />
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
+const itemYourProject = [
+  {
+    name: "Haile1991",
+    logo: "/logo.png",
+    coinNumber: "20",
+    peopleNumber: "20",
+  },
+];
+
 export default function Home() {
-  const itemYourProject = [
-    {
-      name: "Haile1991",
-      logo: "/logo.png",
-      coinNumber: "20",
-      peopleNumber: "20",
-    },
-    {
-      name: "Haile1991",
-      logo: "/logo.png",
-      coinNumber: "20",
-      peopleNumber: "20",
-    },
-  ];
-  const itemPoupularProject = [
-    {
-      name: "Haile1991",
-      logo: "/logo.png",
-      coinNumber: "20",
-      peopleNumber: "20",
-    },
-    {
-      name: "Haile1991",
-      logo: "/logo.png",
-      coinNumber: "20",
-      peopleNumber: "20",
-    },
-    {
-      name: "Haile1991",
-      logo: "/logo.png",
-      coinNumber: "20",
-      peopleNumber: "20",
-    },
-    {
-      name: "Haile1991",
-      logo: "/logo.png",
-      coinNumber: "20",
-      peopleNumber: "20",
-    },
-  ];
+  const [yourDaos, setYourDaos] = React.useState<typeof itemYourProject>([]);
+  const [popularDaos, setPopularDaos] = React.useState<typeof itemYourProject>(
+    []
+  );
+  const { getDaos, getPopularDao } = useDao();
+
+  React.useEffect(() => {
+    getDaos().then((daos) => {
+      setYourDaos(daos);
+    });
+    getPopularDao().then((popularDaos) => {
+      setPopularDaos(popularDaos);
+    });
+  }, []);
+
   return (
     <div className="flex flex-col gap-[60px] pt-10 md:px-[60px] px-4 pb-20">
       {/* Search and Create project */}
@@ -113,18 +107,22 @@ export default function Home() {
       <div className="flex flex-col gap-8">
         <label className="font-semibold text-2xl">Your Project</label>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-          {itemYourProject.map((item, index) => (
-            <DAO item={item} key={index} />
-          ))}
+          {yourDaos.length > 0 ? (
+            yourDaos.map((item, index) => <DAO item={item} key={index} />)
+          ) : (
+            <Empty />
+          )}
         </div>
       </div>
       {/* Most popular projects */}
       <div className="flex flex-col gap-8">
         <label className="font-semibold text-2xl">Most popular projects</label>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-          {itemPoupularProject.map((item, index) => (
-            <DAO item={item} key={index} />
-          ))}
+          {popularDaos.length > 0 ? (
+            popularDaos.map((item, index) => <DAO item={item} key={index} />)
+          ) : (
+            <Empty />
+          )}
         </div>
       </div>
     </div>

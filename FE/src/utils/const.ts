@@ -2,16 +2,16 @@ import { clusterApiUrl, PublicKey } from "@solana/web3.js";
 import idlJson from "./idl.json";
 
 export const CLUSTER =
-  process.env.REACT_APP_CLUSTER === "mainnet"
+  import.meta.env.REACT_APP_CLUSTER === "mainnet"
     ? "mainnet"
-    : process.env.REACT_APP_CLUSTER === "testnet"
+    : import.meta.env.REACT_APP_CLUSTER === "testnet"
     ? "testnet"
-    : process.env.REACT_APP_CLUSTER === "devnet"
+    : import.meta.env.REACT_APP_CLUSTER === "devnet"
     ? "devnet"
     : "localnet";
 
-export const SOLANA_HOST = process.env.REACT_APP_SOLANA_API_URL
-  ? process.env.REACT_APP_SOLANA_API_URL
+export const SOLANA_HOST = import.meta.env.REACT_APP_SOLANA_API_URL
+  ? import.meta.env.REACT_APP_SOLANA_API_URL
   : CLUSTER === "mainnet"
   ? clusterApiUrl("mainnet-beta")
   : CLUSTER === "testnet"
@@ -30,5 +30,7 @@ export const APP_PROGRAM_ID = new PublicKey(
     : ""
 );
 // GZn6qFqAva7J1ZDH1vLdYdjtvjudGnBXb5yRXBm4BKob
+
+export const KLAYTN_ADDRESS = "0x3d55A8cBBAA24C7e7ABac68708FFE2051161f147";
 
 export const APP_IDL = idlJson;

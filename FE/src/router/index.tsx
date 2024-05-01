@@ -6,6 +6,7 @@ import Works from "../pages/Works";
 import DetailWork from "../pages/DetailWork";
 import SignUp from "../pages/SignUp";
 import CreateOrganization from "../pages/CreateDAO";
+import DetailDao from "../pages/DetailDao";
 
 export default function Router() {
   return (
@@ -17,6 +18,7 @@ export default function Router() {
       <Route path="/user-acount/:id" Component={UserAcount} />
       <Route path="/works" Component={Works} />
       <Route path="/works/:id" Component={DetailWork} />
+      <Route path="/dao/:id" Component={DetailDao} />
     </Routes>
   );
 }

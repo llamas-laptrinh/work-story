@@ -1,0 +1,878 @@
+{
+  "contractAddress": "0x855a8E87E12438AA14aEC5c84Dd095494Af4AEd9",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_workId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approveProposal",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_treasury",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_domain",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_limitCreate",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_limitConfirm",
+          "type": "string"
+        }
+      ],
+      "name": "createDAO",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_userName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_bio",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_userProfileImageUrl",
+          "type": "string"
+        }
+      ],
+      "name": "createUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_createdBy",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_imageUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_workUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_categoryId",
+          "type": "uint256"
+        }
+      ],
+      "name": "createWork",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "daos",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "treasury",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "domain",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "limitCreate",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "limitConfirm",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalMembers",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalProposal",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "authority",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "createdAt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_daoId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDAO",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "treasury",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "domain",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitCreate",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitConfirm",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalMembers",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalProposal",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "authority",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct WorkStory.DAO",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDaos",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "treasury",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "domain",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitCreate",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitConfirm",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalMembers",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalProposal",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "authority",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct WorkStory.DAO[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "getPopularDAO",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "treasury",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "domain",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitCreate",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitConfirm",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalMembers",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalProposal",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "authority",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct WorkStory.DAO[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getUser",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "xpPoints",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "userName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "bio",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userWalletAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "userProfileImageUrl",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokens",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "daos",
+              "type": "uint256[]"
+            }
+          ],
+          "internalType": "struct WorkStory.User",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getUserInDAO",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "treasury",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "domain",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitCreate",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "limitConfirm",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalMembers",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalProposal",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "authority",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct WorkStory.DAO[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_workId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getWork",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "authority",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "createdBy",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "imageUrl",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "workUrl",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "commentCount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "categoryId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "status",
+              "type": "uint16"
+            },
+            {
+              "internalType": "address[]",
+              "name": "peopleWhoLiked",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct WorkStory.Work",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getWorkByUser",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "authority",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "createdBy",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "imageUrl",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "workUrl",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "commentCount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "categoryId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "status",
+              "type": "uint16"
+            },
+            {
+              "internalType": "address[]",
+              "name": "peopleWhoLiked",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct WorkStory.Work[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_daoId",
+          "type": "uint256"
+        }
+      ],
+      "name": "joinDAO",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "xpPoints",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "userName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "bio",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userWalletAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "userProfileImageUrl",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokens",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "daos",
+              "type": "uint256[]"
+            }
+          ],
+          "internalType": "struct WorkStory.User",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_workId",
+          "type": "uint256"
+        }
+      ],
+      "name": "rejectProposal",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalDao",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalMember",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalWork",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateUserToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "users",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "xpPoints",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "userName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "bio",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "userWalletAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "userProfileImageUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokens",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "works",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "authority",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "createdBy",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "imageUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "workUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "commentCount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "categoryId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "status",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "createdAt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+}
