@@ -9,13 +9,16 @@ window.Buffer = window.Buffer || Buffer;
 
 import { BrowserRouter } from "react-router-dom";
 import WalletConnectionProvider from "./context/WalletConnectProvider.tsx";
+import AppProvider from "./context/AppProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <WalletConnectionProvider>
-      <BrowserRouter future={{ v7_startTransition: true }}>
-        <App />
-      </BrowserRouter>
+      <AppProvider>
+        <BrowserRouter future={{ v7_startTransition: true }}>
+          <App />
+        </BrowserRouter>
+      </AppProvider>
     </WalletConnectionProvider>
   </React.StrictMode>
 );

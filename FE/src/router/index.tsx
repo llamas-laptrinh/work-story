@@ -17,7 +17,7 @@ export default function Router() {
       <Route path="/sign-up" Component={SignUp} />
       <Route path="/user-acount/:id" Component={UserAcount} />
       <Route path="/works" Component={Works} />
-      <Route path="/works/:id" Component={DetailWork} />
+      <Route path="/work/:id" Component={DetailWork} />
       <Route path="/dao/:id" Component={DetailDao} />
     </Routes>
   );

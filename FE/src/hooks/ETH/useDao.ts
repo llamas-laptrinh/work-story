@@ -4,6 +4,7 @@ import { getProvier } from "../../utils/ETH/getProvider";
 export default function useDao() {
   const initInstance = async () => {
     const { signer } = await getProvier();
+    console.log(signer);
     if (!signer) {
       throw new Error("Provider");
     }
@@ -11,7 +12,9 @@ export default function useDao() {
   };
   const getDao = async (id: string) => {
     const dao = await initInstance();
-    return dao.getDao(id);
+    const user = await dao.getUser();
+    const currentDao = await dao.getDao(id);
+    return { isJoin: user.daos.includes(BigInt(id)), data: currentDao };
   };
   const joinDao = async (id: string) => {
     const dao = await initInstance();
@@ -44,6 +47,7 @@ export default function useDao() {
     const dao = await initInstance();
     return dao.createUser(_userName, _bio, _userProfileImageUrl);
   };
+
   const getUser = async () => {
     const { signer } = await getProvier();
 
@@ -61,6 +65,24 @@ export default function useDao() {
     }
     return new DAOContract(signer).getPopularDao();
   };
+  const createWork = async (
+    _name: string,
+    _createdBy: string,
+    _imageUrl: string,
+    _workUrl: string,
+    _daoId: number
+  ) => {
+    const dao = await initInstance();
+    return dao.createWork(_name, _createdBy, _imageUrl, _workUrl, 0, _daoId);
+  };
+  const getWorks = async () => {
+    const dao = await initInstance();
+    return dao.getYourDao();
+  };
+  const getWork = async (id: string) => {
+    const dao = await initInstance();
+    return dao.getWork(id);
+  };
   return {
     getDao,
     getUser,
@@ -69,5 +91,8 @@ export default function useDao() {
     getDaos,
     getPopularDao,
     joinDao,
+    createWork,
+    getWorks,
+    getWork,
   };
 }

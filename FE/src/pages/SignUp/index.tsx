@@ -15,7 +15,7 @@ export default function SignUp() {
   const onFinish = async () => {
     try {
       const values = await form.validateFields();
-      console.log("Submit:", values);
+      // console.log("Submit:", values);
       const res = await createUser(values.coders, values.bio, values.avatarUrl);
       console.log(res);
     } catch (errInfo) {

@@ -28,15 +28,12 @@ export class DAOContract extends SmartContract {
     _userProfileImageUrl: string
   ) {
     try {
-      console.log("creating user");
       const tx = await this.contract.createUser(
         _userName,
         _bio,
-        _userProfileImageUrl,
+        _userProfileImageUrl
       );
-      console.log("tx", tx);
       const result = await tx.wait();
-      console.log(result);
       return result;
     } catch (error) {
       console.error("creating user", error);
@@ -61,6 +58,41 @@ export class DAOContract extends SmartContract {
   }
   async getUser() {
     const tx = await this.contract.getUser();
+    return tx;
+  }
+  async createWork(
+    _name: string,
+    _createdBy: string,
+    _imageUrl: string,
+    _workUrl: string,
+    _categoryId: number,
+    _daoId: number
+  ) {
+    const txSend = await this.contract.createWork(
+      _name,
+      _createdBy,
+      _imageUrl,
+      _workUrl,
+      _categoryId,
+      _daoId,
+      {
+        gasLimit: 3000000,
+        nonce: await this.wallet.getNonce(),
+      }
+    );
+    const tx = await txSend.wait();
+    return tx;
+  }
+  async getYourWorks() {
+    const tx = await this.contract.getWorkByUser();
+    return tx;
+  }
+  async getWorksInDao(id: string) {
+    const tx = await this.contract.getWorkInDao(parseInt(id));
+    return tx;
+  }
+  async getWork(id: string) {
+    const tx = await this.contract.getWork(parseInt(id));
     return tx;
   }
   async joinDao(id: string) {
