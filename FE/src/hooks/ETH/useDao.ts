@@ -29,14 +29,20 @@ export default function useDao() {
     const dao = await initInstance();
     return dao.getYourDao();
   };
-  const createDAO = async () => {
+  const createDAO = async (
+    _treasury: string,
+    _domain: string,
+    _name: string,
+    _limitCreate: string,
+    _limitConfirm: string
+  ) => {
     const dao = await initInstance();
     return dao.createDao({
-      _treasury: 0,
-      _domain: "Blockchain",
-      _name: "",
-      _limitCreate: "",
-      _limitConfirm: "",
+      _treasury,
+      _domain,
+      _name,
+      _limitCreate,
+      _limitConfirm,
     });
   };
   const createUser = async (

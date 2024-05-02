@@ -11,6 +11,12 @@ export const getProvier = async () => {
     // so they only have read-only access
     console.log("MetaMask not installed; using read-only defaults");
   } else {
+    window.ethereum.on("accountsChanged", function (accounts: Array<string>) {
+      // Time to reload your interface with accounts[0]!
+      // alert("AccountChanged: " + accounts[0]);
+      console.log("AccountsChanged: " + accounts);
+      window.location.reload();
+    });
     // Connect to the MetaMask EIP-1193 object. This is a standard
     // protocol that allows Ethers access to make all read-only
     // requests through MetaMask.

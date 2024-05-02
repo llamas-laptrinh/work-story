@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Form, Mentions, Space } from "antd";
 import useDao from "../../hooks/ETH/useDao";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 // const { getMentions } = Mentions;
 
 export default function SignUp() {
+  const { setLoading } = useContext(AppContext);
   const [form] = Form.useForm();
 
   const { createUser } = useDao();
@@ -14,12 +17,16 @@ export default function SignUp() {
 
   const onFinish = async () => {
     try {
+      setLoading(true);
       const values = await form.validateFields();
       // console.log("Submit:", values);
       const res = await createUser(values.coders, values.bio, values.avatarUrl);
       console.log(res);
+      setLoading(false);
+      window.location.reload();
     } catch (errInfo) {
       console.log("Error:", errInfo);
+      setLoading(false);
     }
   };
 

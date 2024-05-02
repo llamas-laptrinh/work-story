@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Popover, Steps } from "antd";
 import type { StepsProps } from "antd";
 import NameAndPurpose from "./create-project/name-and-purpose";
@@ -7,6 +7,8 @@ import ProjectTreasury from "./create-project/project_treasury";
 import AddMembers from "./create-project/add-members";
 import ConfirmInformation from "./create-project/confirm-information";
 import { ArrowsAltOutlined, LeftOutlined } from "@ant-design/icons";
+import useDao from "../../hooks/ETH/useDao";
+import { AppContext } from "../../context/AppContext";
 
 const customDot: StepsProps["progressDot"] = (dot, { status, index }) => (
   <Popover
@@ -21,6 +23,8 @@ const customDot: StepsProps["progressDot"] = (dot, { status, index }) => (
 );
 
 export default function CreateDAO() {
+  const { createDAO } = useDao();
+  const { setLoading } = useContext(AppContext);
   const [DAOInfo, setDAOInfo] = useState({
     name: "",
     domain: "",
@@ -33,8 +37,17 @@ export default function CreateDAO() {
   });
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  const createDAO = () => {
+  const onFinish = async () => {
     console.log("Creating", DAOInfo);
+    setLoading(true);
+    await createDAO(
+      DAOInfo.treasury,
+      DAOInfo.domain,
+      DAOInfo.name,
+      DAOInfo.proposal.submit,
+      DAOInfo.proposal.submit
+    );
+    setLoading(false);
   };
   const onClick = () => {
     if (activeStep < steps.length - 1) {
@@ -88,7 +101,7 @@ export default function CreateDAO() {
     },
     {
       title: "Confirm Information",
-      content: <ConfirmInformation onSumit={createDAO} />,
+      content: <ConfirmInformation onSumit={onFinish} />,
     },
   ];
   const description = "";
