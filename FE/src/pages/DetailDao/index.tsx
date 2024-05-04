@@ -93,17 +93,17 @@ export default function DetailDao() {
               options={[
                 {
                   value:
-                    "https://lexica.art/prompt/387c4c2d-511e-4933-9a03-d3a21b24f9b5",
+                    "https://image.lexica.art/full_webp/28f85e1c-11cf-411e-b3ed-c82bb1aa224d",
                   label: "Content writer",
                 },
                 {
                   value:
-                    "https://lexica.art/prompt/d5022522-cfad-4775-ac9b-78b948d7565b",
+                    "https://image.lexica.art/full_webp/ddbc4494-8f93-4a8c-b378-d6d58024a75b",
                   label: "Design",
                 },
                 {
                   value:
-                    "https://lexica.art/prompt/01db1708-022a-4752-b234-12ebbac12217",
+                    "https://image.lexica.art/full_webp/ddbc4494-8f93-4a8c-b378-d6d58024a75b",
                   label: "Project",
                 },
               ]}

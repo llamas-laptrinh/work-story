@@ -115,4 +115,7 @@ export class DAOContract extends SmartContract {
     const tx = await this.contract.getDaos();
     return tx;
   }
+  async approveProposal(id: string) {
+    return this.contract.approveProposal(parseInt(id));
+  }
 }

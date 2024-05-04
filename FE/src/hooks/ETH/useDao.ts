@@ -81,9 +81,9 @@ export default function useDao() {
     const dao = await initInstance();
     return dao.createWork(_name, _createdBy, _imageUrl, _workUrl, 0, _daoId);
   };
-  const getWorks = async () => {
+  const getWorks = async (id: string) => {
     const dao = await initInstance();
-    return dao.getYourDao();
+    return dao.getWorksInDao(id);
   };
   const getWork = async (id: string) => {
     const dao = await initInstance();
